@@ -35,9 +35,10 @@ public class Person5 {
 	  for (int i = 2; i < input.length(); i++) {
 	  	out += input.charAt(i);
 	  }
-	  out += input.subString(0, 2);
+	  out += input.substring(0, 2);
 
 	  return out;
+	  //return null;
 	}
 
 	/**
