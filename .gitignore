@@ -6,8 +6,7 @@
 .idea/
 
 # Gradle
-gradle/
-/.gradle/
+.gradle/
 /build/
 
 # Eclipse
