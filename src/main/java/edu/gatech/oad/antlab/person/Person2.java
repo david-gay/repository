@@ -33,7 +33,7 @@ public class Person2 {
 	  char[] vals = new char[input.length()];
 	  for(int i = 0; i < input.length(); i++) {
 	      int j = (int)(Math.random()*vals.length);
-	      while(vals[j] == 0) {
+	      while(vals[j] != 0) {
 	          j = (int)(Math.random()*vals.length);
 	      }
 	      vals[j] = input.charAt(i);
