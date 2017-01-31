@@ -1,0 +1,27 @@
+
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+def classPath = 'lib/resources.jar'
+
+repositories {
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+dependencies {
+    compile name: 'resources'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                   'Class-Path': classPath
+    }
+
+    //bundle libary files together so that the output jar is all you need to run the app
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
