@@ -14,10 +14,14 @@ dependencies {
 }
 
 jar {
-    destinationDir = file('.')
     manifest {
         attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
                    'Class-Path': classPath
+    }
+
+    // makes output.jar contain all needed files internally
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it)}
     }
 }
 
