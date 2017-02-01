@@ -15,6 +15,12 @@ def classPath = 'lib/resources.jar'
 
 defaultTasks 'jar'
 
+repositories {
+    flatDir {
+        dirs 'lib'
+    }
+}
+
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
@@ -28,10 +34,12 @@ dependencies {
 }
 
 jar {
-    destinationDir = file('.')
     manifest {
         attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
                    'Class-Path': classPath
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it)}
     }
 }
 
